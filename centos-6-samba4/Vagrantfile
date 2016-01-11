@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "geerlingguy/centos6"
+  config.vm.network :forwarded_port, guest: 137, host: 139
+  config.vm.network :forwarded_port, guest: 138, host: 139
+  config.vm.network :forwarded_port, guest: 139, host: 139
+  config.vm.network :forwarded_port, guest: 445, host: 445
+
+  # config.vm.provider "virtualbox" do |vb|
+  #   vb.memory = "1024"
+  # end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo yum install -y samba4
+    sudo chkconfig --levels 23456 iptables off
+    sudo /etc/init.d/iptables stop
+  SHELL
+
+end
