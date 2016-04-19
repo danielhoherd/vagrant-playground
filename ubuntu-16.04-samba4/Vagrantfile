@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/xenial64"
+#  config.vm.network :forwarded_port, guest: 137, host: 139
+#  config.vm.network :forwarded_port, guest: 138, host: 139
+#  config.vm.network :forwarded_port, guest: 139, host: 139
+#  config.vm.network :forwarded_port, guest: 445, host: 445
+  config.vm.network "private_network", ip: "192.168.50.4"
+
+
+  # config.vm.provider "virtualbox" do |vb|
+  #   vb.memory = "1024"
+  # end
+
+# TODO: move this to puppet provisioning
+#  config.vm.provision "shell", inline: <<-SHELL
+#    sudo /etc/init.d/iptables   stop
+#    sudo chkconfig --levels 23456 iptables off
+#
+#    sudo yum install -y samba4 vim avahi samba4-winbind-clients samba4-winbind
+#
+#    sudo cp /vagrant/smb.conf /etc/samba/smb.conf
+#    sudo cp /vagrant/avahi*service /etc/avahi/services/
+#
+#    sudo /etc/init.d/messagebus   start
+#    sudo /etc/init.d/smb          start
+#    sudo /etc/init.d/avahi-daemon start
+#  SHELL
+
+end
