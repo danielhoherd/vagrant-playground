@@ -29,4 +29,9 @@ Vagrant.configure(2) do |config|
 #    sudo /etc/init.d/avahi-daemon start
 #  SHELL
 
+  # https://docs.vagrantup.com/v2/provisioning/puppet_apply.html
+  config.vm.provision "puppet" do |puppet|
+    puppet.options = "--verbose --debug"
+  end
+
 end
