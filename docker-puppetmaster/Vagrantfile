@@ -1,26 +1,40 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$provision_server = <<EOS
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -yq puppetserver puppet-agent
+/opt/puppetlabs/bin/puppet resource package puppetdb-termini ensure=latest
+rsync -a /vagrant/server/etc /
+chown -R puppet:puppet "/etc/puppetlabs/puppet"
+EOS
+
+$provision_client = <<EOS
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -yq puppet-common
+EOS
+
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
-
-  config.vm.define vm_name = "puppet-client" do |config|
-    config.cache.scope = :box
-    config.vm.hostname = vm_name
-    ip = "172.19.57.100"
-    config.vm.network :private_network, ip: ip
-    config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", :privileged => true
-    config.vm.provision :shell, :inline => "DEBIAN_FRONTEND=noninteractive apt-get install -yq puppet-common", :privileged => true
-  end
 
   config.vm.define vm_name = "puppet-server" do |config|
     config.cache.scope = :box
     config.vm.hostname = vm_name
     ip = "172.19.57.100"
     config.vm.network :private_network, ip: ip
-    config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", :privileged => true
-    config.vm.provision :shell, :inline => "DEBIAN_FRONTEND=noninteractive apt-get install -yq puppetserver", :privileged => true
+    config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", privileged: true
+    config.vm.provision :shell, inline: $provision_server, privileged: true
   end
+
+  config.vm.define vm_name = "puppet-client" do |config|
+    config.cache.scope = :box
+    config.vm.hostname = vm_name
+    ip = "172.19.57.100"
+    config.vm.network :private_network, ip: ip
+    config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", privileged: true
+    config.vm.provision :shell, inline: $provision_server, privileged: true
+  end
+
 end
 
 # vim: ai ts=2 sts=2 et sw=2 ft=ruby
