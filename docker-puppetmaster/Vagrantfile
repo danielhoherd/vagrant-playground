@@ -18,8 +18,11 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
 
   config.vm.define vm_name = "puppet-server" do |config|
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "3072"
+    end
     config.cache.scope = :box
-    config.vm.hostname = vm_name
+    config.vm.hostname = "puppet-server"
     ip = "172.19.57.100"
     config.vm.network :private_network, ip: ip
     config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", privileged: true
@@ -27,9 +30,12 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define vm_name = "puppet-client" do |config|
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"
+    end
     config.cache.scope = :box
     config.vm.hostname = vm_name
-    ip = "172.19.57.100"
+    ip = "172.19.57.101"
     config.vm.network :private_network, ip: ip
     config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", privileged: true
     config.vm.provision :shell, inline: $provision_server, privileged: true
