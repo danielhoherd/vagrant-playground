@@ -1,19 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-$provision_server = <<EOS
-export DEBIAN_FRONTEND=noninteractive
-apt-get install -yq puppetserver puppet-agent
-/opt/puppetlabs/bin/puppet resource package puppetdb-termini ensure=latest
-rsync -a /vagrant/server/etc /
-chown -R puppet:puppet "/etc/puppetlabs/puppet"
-EOS
-
-$provision_client = <<EOS
-export DEBIAN_FRONTEND=noninteractive
-apt-get install -yq puppet-common
-EOS
-
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
 
@@ -25,8 +12,7 @@ Vagrant.configure(2) do |config|
     config.vm.hostname = "puppet-server"
     ip = "172.19.57.100"
     config.vm.network :private_network, ip: ip
-    config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", privileged: true
-    config.vm.provision :shell, inline: $provision_server, privileged: true
+    config.vm.provision :shell, path: "setup-puppet-server.sh", privileged: true
   end
 
   config.vm.define vm_name = "puppet-client" do |config|
@@ -37,8 +23,7 @@ Vagrant.configure(2) do |config|
     config.vm.hostname = vm_name
     ip = "172.19.57.101"
     config.vm.network :private_network, ip: ip
-    config.vm.provision :shell, path: "setup-puppetlabs-repo.sh", privileged: true
-    config.vm.provision :shell, inline: $provision_server, privileged: true
+    config.vm.provision :shell, path: "setup-puppet-client.sh", privileged: true
   end
 
 end
