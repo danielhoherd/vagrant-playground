@@ -20,8 +20,8 @@ EOF
 cat > /root/tty1.sh << EOF
 #!/usr/bin/env bash
 while true ; do
-  sleep 1
   echo -n .
+  sleep 1
 done
 EOF
 
