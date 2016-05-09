@@ -1,6 +1,5 @@
-# Demo of starting a persistent interactive process on tty1 at boot
+#!/usr/bin/env bash
 
-```
 cat > /etc/systemd/system/tty1.service << EOF
 [Unit]
 Description=tty1_test
@@ -28,9 +27,4 @@ EOF
 chmod +x /root/tty1.sh
 systemctl disable getty@tty1.service
 systemctl enable tty1
-```
-
-# See Also
-
-- <http://0pointer.de/blog/projects/serial-console.html>
-- <http://superuser.com/a/642006>
+reboot

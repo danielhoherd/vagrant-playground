@@ -6,4 +6,5 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |v|
     v.gui = true
   end
+  config.vm.provision :shell, path: "setup.sh", privileged: true
 end
