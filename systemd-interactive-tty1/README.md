@@ -6,5 +6,4 @@ This demo needs to reboot in order to work, so you must `vagrant plugin install 
 
 # See Also
 
-- <http://0pointer.de/blog/projects/serial-console.html>
 - <http://superuser.com/a/642006> - The thread post where most of this logic was taken from.
