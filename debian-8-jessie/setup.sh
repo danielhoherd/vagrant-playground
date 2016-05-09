@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+apt-get install -y screen
 cat > /etc/systemd/system/tty1.service << EOF
 [Unit]
 Description=tty1_test
@@ -27,4 +28,3 @@ EOF
 chmod +x /root/tty1.sh
 systemctl disable getty@tty1.service
 systemctl enable tty1
-reboot

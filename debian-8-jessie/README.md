@@ -1,6 +1,10 @@
 # Demo of starting a persistent interactive process on tty1 at boot
 
+This demo needs to reboot in order to work, so you must `vagrant plugin install vagrant-reload`
+
 ```
+apt-get install -y screen
+
 cat > /etc/systemd/system/tty1.service << EOF
 [Unit]
 Description=tty1_test
