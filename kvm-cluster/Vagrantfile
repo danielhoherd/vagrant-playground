@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   (1..3).each do |i|
     config.vm.define vm_name = "kvm-server-#{i}" do |config|
+      # Requires: vagrant plugin install vagrant-cachier
       config.cache.scope = :box
       config.vm.hostname = vm_name
       ip = "172.21.12.#{i+10}"
