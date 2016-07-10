@@ -6,6 +6,11 @@ package { 'vim':
   ensure => 'latest'
 }
 
+# Required for `mkpasswd`
+package { 'whois':
+  ensure => 'latest'
+}
+
 package { 'avahi-daemon':
   ensure => 'latest'
 }
@@ -27,6 +32,8 @@ user { 'dave':
   shell      => '/bin/bash',
   uid        => '1501',
   managehome => true,
+  # mkpasswd -m sha-512 asdf
+  password   => '$6$5WG4yJVHBgnmd$BWt1acGzAU0ecUY1WZR4xqxG2/abG5VVnKx0cabu2VMluffer6NjeWDhF56m/QKJ8A144r/AyYFmH9xG5ssRn0',
 }
 
 file { '/home/dave':
