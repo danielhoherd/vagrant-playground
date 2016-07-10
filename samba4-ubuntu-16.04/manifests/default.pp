@@ -39,4 +39,7 @@ file { '/home/dave':
 } ->
 package { 'samba':
   ensure => 'latest'
+} ->
+package { 'libpam-smbpass':
+  ensure => 'latest'
 }
