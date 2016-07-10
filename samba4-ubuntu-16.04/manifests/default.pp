@@ -28,3 +28,10 @@ user { 'dave':
   uid        => '1501',
   managehome => true,
 }
+
+file { '/home/dave':
+  ensure => 'directory',
+  group  => '1501',
+  mode   => '755',
+  owner  => '1501',
+}
