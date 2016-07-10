@@ -2,6 +2,18 @@ exec { 'apt-get update':
   path => '/usr/bin'
 }
 
+package { 'vim':
+  ensure => 'latest'
+}
+
+package { 'avahi-daemon':
+  ensure => 'latest'
+}
+
+package { 'samba':
+  ensure => 'latest'
+}
+
 group { 'dave':
   ensure => 'present',
   gid    => '1501',
