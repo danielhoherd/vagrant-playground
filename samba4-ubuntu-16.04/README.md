@@ -1,0 +1,1 @@
+- user auth docs - https://www.samba.org/samba/docs/using_samba/ch09.html
