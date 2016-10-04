@@ -9,8 +9,9 @@ Vagrant.configure(2) do |config|
 #    v.gui = true
 #  end
 
-  # https://docs.vagrantup.com/v2/provisioning/puppet_apply.html
-  config.vm.provision "puppet" do |puppet|
-    puppet.options = "--verbose --debug"
-  end
+# https://docs.vagrantup.com/v2/provisioning/puppet_apply.html
+#  config.vm.provision "puppet" do |puppet|
+#    puppet.options = "--verbose --debug"
+#  end
+
 end
