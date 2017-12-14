@@ -1,0 +1,26 @@
+repos:
+  - repo: git@github.com:pre-commit/pre-commit-hooks.git
+    sha: v1.1.1
+    hooks:
+      - id: check-byte-order-marker
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: fix-encoding-pragma
+      - id: flake8
+      - id: mixed-line-ending
+      - id: requirements-txt-fixer
+      - id: sort-simple-yaml
+      - id: trailing-whitespace
+  - repo: git@github.com:detailyang/pre-commit-shell.git
+    sha: 1.0.2
+    hooks:
+      - id: shell-lint
+  - repo: git@github.com:Lucas-C/pre-commit-hooks.git
+    sha: v1.1.4
+    hooks:
+      - id: forbid-tabs
+      - id: remove-tabs
