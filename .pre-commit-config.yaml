@@ -1,6 +1,6 @@
 repos:
   - repo: git@github.com:pre-commit/pre-commit-hooks.git
-    sha: v1.2.3
+    rev: v1.2.3
     hooks:
       - id: check-byte-order-marker
       - id: check-case-conflict
@@ -16,11 +16,11 @@ repos:
       - id: sort-simple-yaml
       - id: trailing-whitespace
   - repo: git@github.com:detailyang/pre-commit-shell.git
-    sha: 1.0.2
+    rev: 1.0.2
     hooks:
       - id: shell-lint
   - repo: git@github.com:Lucas-C/pre-commit-hooks.git
-    sha: v1.1.4
+    rev: v1.1.4
     hooks:
       - id: forbid-tabs
       - id: remove-tabs
