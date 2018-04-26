@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # http://emulationstation.org/gettingstarted.html#install_deb
 # No clue why these guys don't provide their own Vagrantfile as an example...
+set -e
+set -x
 
 sudo apt-get update
 sudo apt-get upgrade -y
