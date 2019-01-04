@@ -9,11 +9,11 @@ Vagrant.configure(2) do |config|
 #    v.gui = true
 #  end
 
-  config.vm.provision "shell", inline: <<-SHELL
-    export DEBIAN_FRONTEND=noninteractive
-    apt update
-    apt install -y python
-  SHELL
+#  config.vm.provision "shell", inline: <<-SHELL
+#    export DEBIAN_FRONTEND=noninteractive
+#    apt update
+#    apt install -y python
+#  SHELL
 
 # https://www.vagrantup.com/docs/provisioning/ansible.html
   config.vm.provision "ansible" do |ansible|

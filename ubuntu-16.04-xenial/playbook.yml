@@ -4,12 +4,15 @@
   gather_facts: no
   become: yes
 
+  vars:
+    default_packages:
+      - curl
+      - jq
+      - vim
+      - wget
+
   tasks:
-    - name: Install some packages
+    - name: Install default packages
       apt:
-        name: "{{item}}"
+        name: "{{default_packages}}"
         state: present
-      with_items:
-        - curl
-        - jq
-        - wget
