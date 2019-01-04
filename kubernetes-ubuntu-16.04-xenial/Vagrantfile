@@ -23,6 +23,7 @@ Vagrant.configure(2) do |config|
     mkdir ~vagrant/.kube
     cp /etc/kubernetes/admin.conf ~vagrant/.kube/config
     chown -R vagrant:vagrant ~vagrant
+    kubectl taint nodes ubuntu-xenial node-role.kubernetes.io/master:NoSchedule-
   SHELL
 
 end
