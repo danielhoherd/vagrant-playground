@@ -35,7 +35,7 @@ Vagrant.configure(2) do |config|
     echo '. <(kubectl completion bash)' >> ~vagrant/.bashrc
     chown -R vagrant:vagrant ~vagrant
 
-    kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml && break
+    kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
     kubectl taint nodes ubuntu-xenial node-role.kubernetes.io/master:NoSchedule-
   SHELL
 
