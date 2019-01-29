@@ -9,7 +9,9 @@ repos:
       - id: check-merge-conflict
       - id: check-xml
       - id: check-yaml
+        args: ['--allow-multiple-documents']
       - id: debug-statements
+      - id: double-quote-string-fixer
       - id: end-of-file-fixer
       - id: fix-encoding-pragma
       - id: flake8
@@ -26,11 +28,15 @@ repos:
     rev: v1.1.6
     hooks:
       - id: remove-tabs
-        exclude: ^Makefile$
+        exclude_types: [makefile]
   - repo: https://github.com/asottile/reorder_python_imports
     rev: v1.3.4
     hooks:
       - id: reorder-python-imports
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.14.0
+    hooks:
+      - id: yamllint
   - repo: local
     hooks:
       - id: remove-unicode-non-breaking-spaces
@@ -48,7 +54,3 @@ repos:
         language: system
         entry: perl -pi* -e 's/\xe2\x80\x93/-/g && ($t = 1) && print STDERR $_; END{{exit $t}}'
         exclude: '.*\.(a|png|jpg|jpeg|gif)'
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.13.0
-    hooks:
-      - id: yamllint
