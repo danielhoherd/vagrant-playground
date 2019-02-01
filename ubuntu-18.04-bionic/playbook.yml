@@ -4,12 +4,14 @@
   gather_facts: no
   become: yes
 
+  vars:
+    packages:
+      - curl
+      - jq
+      - wget
+
   tasks:
     - name: Install packages
       apt:
-        name: "{{ item }}"
+        name: "{{ packages }}"
         state: present
-      with_items:
-        - curl
-        - jq
-        - wget
