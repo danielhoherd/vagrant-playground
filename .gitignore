@@ -1,6 +1,5 @@
-.vagrant
 *.log
-*.swp
-*.swo
-.DS_Store
 *.retry
+*.sw?
+.DS_Store
+.vagrant

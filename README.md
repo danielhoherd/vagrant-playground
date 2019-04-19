@@ -1,5 +1,7 @@
 Dev environments and techological playgrounds built on [Vagrant](https://www.vagrantup.com/).
 
+I also have more notes about Vagrant in [tech-notes/vagrant](https://danielhoherd.com/tech-notes/vagrant/)
+
 # Links to other neat vagrant stuff
 - [Multinode GlusterFS on Vagrant](https://github.com/carmstrong/multinode-glusterfs-vagrant)
 - [Vagrant development environment for Aptly](https://github.com/sepulworld/aptly-vagrant)
