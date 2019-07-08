@@ -5,10 +5,10 @@
   become: yes
 
   vars:
+    ansible_python_interpreter: /usr/bin/python3
     packages:
       - curl
       - jq
-      # - python3-pip
       - wget
 
   tasks:
