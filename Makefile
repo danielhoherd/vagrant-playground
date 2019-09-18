@@ -6,6 +6,9 @@ help: ## Print Makefile help.
 
 .PHONY: install-hooks
 install-hooks: ## Install git hooks.
-	pip3 install --user --upgrade pre-commit || \
-	pip install --user --upgrade pre-commit
+	pip3 install --user --upgrade pre-commit
 	pre-commit install -f --install-hooks
+
+.PHONY: ip-reservation-list
+ip-reservation-list: ## List reserved IPv4 addresses
+	git grep -h -o '192.168.50.[0-9]\{1,3\}' | sort -t. -k4 -n
