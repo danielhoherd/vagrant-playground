@@ -1,22 +1,19 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.2.3
+    rev: v2.4.0
     hooks:
-      - id: check-byte-order-marker
       - id: check-case-conflict
       - id: check-json
       - id: check-merge-conflict
+      - id: check-toml
       - id: check-xml
       - id: check-yaml
         args: ['--allow-multiple-documents']
       - id: debug-statements
-      - id: double-quote-string-fixer
       - id: end-of-file-fixer
-      - id: flake8
       - id: mixed-line-ending
-        args: ['--fix=lf' ]
-      - id: requirements-txt-fixer
+        args: ['--fix=lf']
       - id: sort-simple-yaml
       - id: trailing-whitespace
   - repo: https://github.com/detailyang/pre-commit-shell
@@ -24,22 +21,17 @@ repos:
     hooks:
       - id: shell-lint
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.6
+    rev: v1.1.7
     hooks:
       - id: remove-tabs
         exclude_types: [makefile, binary]
-  - repo: https://github.com/asottile/reorder_python_imports
-    rev: v1.5.0
-    hooks:
-      - id: reorder-python-imports
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.16.0
+    rev: v1.20.0
     hooks:
       - id: yamllint
   - repo: https://github.com/danielhoherd/pre-commit-hooks
-    rev: 0b84f996d085b772bcdb94279ebcddc827a2fd57
+    rev: d0ec497c80183b0e8b19216154c26a956103a416
     hooks:
-      - id: CVE-2017-18342
       - id: remove-unicode-non-breaking-spaces
       - id: remove-unicode-zero-width-non-breaking-spaces
       - id: remove-en-dashes
