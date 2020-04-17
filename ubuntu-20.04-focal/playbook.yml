@@ -1,0 +1,17 @@
+---
+- name: Provision Vagrant VM
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  vars:
+    packages:
+      - curl
+      - jq
+      - wget
+
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ packages }}"
+        state: present
