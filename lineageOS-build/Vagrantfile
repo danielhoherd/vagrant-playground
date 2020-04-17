@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# <https://github.com/lavabit/robox>
+# <https://app.vagrantup.com/lineage/boxes/lineage>
+# <https://wiki.lineageos.org/devices/klimtwifi/build>
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "lineageos/lineage"
+  config.vm.network "private_network", ip: "192.168.50.6"
+
+
+  config.vm.provider "virtualbox" do |v|
+#    v.gui = true
+    v.memory = "8192"
+  end
+
+#  config.vm.provision "shell", inline: <<-SHELL
+#    apt-get update
+#    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+#      ubuntu-desktop \
+#      virtualbox-guest-dkms \
+#      virtualbox-guest-utils \
+#      virtualbox-guest-x11
+#    shutdown -r +1
+#  SHELL
+end
