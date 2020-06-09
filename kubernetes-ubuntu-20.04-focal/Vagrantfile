@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/eoan64"
+  config.vm.box = "ubuntu/focal64"
   config.vm.network "private_network", ip: "192.168.50.15"
 
   config.vm.provider "virtualbox" do |v|
@@ -16,8 +16,8 @@ Vagrant.configure(2) do |config|
     swapoff -a # https://github.com/kubernetes/kubernetes/issues/53533
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan stable" > /etc/apt/sources.list.d/docker.list
-    echo "deb http://packages.cloud.google.com/apt cloud-sdk-eoan main" > /etc/apt/sources.list.d/google-cloud-sdk.list
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" > /etc/apt/sources.list.d/docker.list
+    echo "deb http://packages.cloud.google.com/apt cloud-sdk-focal main" > /etc/apt/sources.list.d/google-cloud-sdk.list
     echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list  # yes, xenial 🙄
 
     export DEBIAN_FRONTEND=noninteractive
@@ -40,7 +40,7 @@ Vagrant.configure(2) do |config|
     chown -R vagrant:vagrant ~vagrant
 
     kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
-    kubectl taint nodes ubuntu-eoan node-role.kubernetes.io/master:NoSchedule-
+    kubectl taint nodes ubuntu-focal node-role.kubernetes.io/master:NoSchedule-
   SHELL
 
 end

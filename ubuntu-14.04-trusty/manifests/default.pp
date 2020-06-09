@@ -1,3 +1,0 @@
-package { 'vim':
-  ensure => latest,
-}
