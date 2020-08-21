@@ -1,0 +1,50 @@
+---
+- name: Provision Vagrant VM
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    packages:
+      - curl
+      - git
+      - jq
+      - python3
+      - python3-pip
+      - wget
+
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+
+    - name: Ensure github3.py is installed  # required for github_release
+      pip:
+        name: github3.py
+
+    - name: Get latest release of bat
+      github_release:
+        user: sharkdp
+        repo: bat
+        action: latest_release
+      register: bat_release
+
+    - name: Install bat # https://github.com/sharkdp/bat/releases
+      apt:
+        deb: "https://github.com/sharkdp/bat/releases/download/{{ bat_release.tag }}/bat_{{ bat_release.tag[1:] }}_amd64.deb"
+
+    - name: Download helm # https://github.com/helm/helm/releases
+      unarchive:
+        src: "https://get.helm.sh/helm-v3.3.0-linux-amd64.tar.gz"
+        dest: /tmp
+        remote_src: true
+
+    - name: Copy helm
+      copy:
+        src: /tmp/linux-amd64/helm
+        dest: /usr/bin/helm
+        mode: 0755
+        remote_src: true
