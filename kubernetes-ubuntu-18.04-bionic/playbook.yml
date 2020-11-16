@@ -21,7 +21,7 @@
         state: present
         update_cache: yes
 
-    - name: Ensure github3.py is installed  # required for github_release
+    - name: Ensure github3.py is installed # required for github_release
       pip:
         name: github3.py
 
