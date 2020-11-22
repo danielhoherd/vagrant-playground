@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
     # Find your vendorid and paroductid with lsusb. XXXX:YYYY where XXXX is vendorid, YYYY is productid
     vb.customize ["modifyvm", :id, "--usb", "on"]
     vb.customize ['modifyvm', :id, '--usbxhci', 'on']
-    vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'Samsung Electronics Co. Galaxy S II', '--vendorid', '0x04e8', '--productid', '0x685d']
+    vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'Samsung Galaxy Tab S 8.4 Wi-Fi', '--vendorid', '0x04e8', '--productid', '0x685d']
   end
 
 #  config.vm.provision "shell", inline: <<-SHELL
