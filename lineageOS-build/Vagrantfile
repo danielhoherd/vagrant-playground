@@ -11,9 +11,13 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
 #    v.gui = true
     vb.memory = "8192"
-#    vb.customize ["modifyvm", :id, "--usb", "on"]
-#    vb.customize ['modifyvm', :id, '--usbxhci', 'on']
-#    vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'Samsung Electronics Co. Galaxy S II', '--vendorid', '0x04e8', '--productid', '0x685d']
+    # This requires that the running user be in the vboxusers group.
+    # Check `groups` to verify your groups, log out and back in after group modifications.
+    # Check `vboxmanage list usbhost` for available devices.
+    # Find your vendorid and paroductid with lsusb. XXXX:YYYY where XXXX is vendorid, YYYY is productid
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ['modifyvm', :id, '--usbxhci', 'on']
+    vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'Samsung Electronics Co. Galaxy S II', '--vendorid', '0x04e8', '--productid', '0x685d']
   end
 
 #  config.vm.provision "shell", inline: <<-SHELL
