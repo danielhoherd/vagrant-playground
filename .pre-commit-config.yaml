@@ -1,11 +1,11 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v2.1.2"
+    rev: "v2.4.1"
     hooks:
       - id: prettier
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v4.0.1
     hooks:
       - id: check-case-conflict
       - id: check-json
@@ -21,20 +21,20 @@ repos:
       - id: sort-simple-yaml
       - id: trailing-whitespace
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.7.2.1
+    rev: v0.8.0.1
     hooks:
       - id: shellcheck
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.9
+    rev: v1.1.10
     hooks:
       - id: remove-tabs
         exclude_types: [makefile, binary]
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.24.2
+    rev: v1.26.3
     hooks:
       - id: yamllint
   - repo: https://github.com/danielhoherd/pre-commit-hooks
-    rev: ac0637d7febb88d1b01f876e47bb5224a9a63eae
+    rev: 3df2cd5fc0bffe63b0a5e0021f9885a223d51600
     hooks:
       - id: remove-unicode-non-breaking-spaces
       - id: remove-unicode-zero-width-non-breaking-spaces
