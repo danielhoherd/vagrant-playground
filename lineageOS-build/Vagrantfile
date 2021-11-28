@@ -4,6 +4,7 @@
 # <https://app.vagrantup.com/lineage/boxes/lineage>
 # <https://wiki.lineageos.org/devices/klimtwifi/build>
 # <https://github.com/lavabit/robox/issues/176> Vagrant provisioning discussion
+# <https://github.com/LineageOS/hudson/blob/97dbe83b9a63ef/updater/devices.json>
 
 Vagrant.configure(2) do |config|
   config.vm.box = "lineageos/lineage"
