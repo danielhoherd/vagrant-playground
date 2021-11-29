@@ -1,5 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+#
+# This has never worked
+#
 # <https://github.com/lavabit/robox>
 # <https://app.vagrantup.com/lineage/boxes/lineage>
 # <https://wiki.lineageos.org/devices/klimtwifi/build>
